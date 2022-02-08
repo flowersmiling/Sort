@@ -57,6 +57,7 @@ class MergeSorter {
 	      left++;
 	      index++;
 	    }
+		  
 	   // merge all values from right side to temp
 	    while (midValue <= r) {
 	      temp[index] = a[midValue];
