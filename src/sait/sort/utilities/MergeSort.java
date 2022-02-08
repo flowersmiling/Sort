@@ -45,7 +45,7 @@ class MergeSorter {
 	      } 
 		// merge right side into left side of the array
 		else {
-	        values[index] = a[midValue];
+	        temp[index] = a[midValue];
 	        midValue++;
 	      }
 	      index++;
