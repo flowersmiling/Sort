@@ -11,7 +11,8 @@ public class AppDriver {
 		
 		if( strComd != "" && strComd != null ) 
 		{
-			String[] cmds = strComd.replaceAll(" \s+", " ").split(" ");
+			//replace more than one space or tab with one space, split the string to array with one space
+			String[] cmds = strComd.replaceAll("\\s+", " ").split(" ");
 			
 			for(int i = 0; i < cmds.length; i++) 
 			{
