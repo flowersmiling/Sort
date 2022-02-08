@@ -1,11 +1,17 @@
 package sait.sort.application;
 
+import java.io.FileNotFoundException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
 public class AppDriver {
 
-	public static void main(String[] args) 
+	public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException 
 	{
+		char type = ' ';
+		char algo = ' ';
+		String path = "";
+		
 		Scanner scan = new Scanner(System.in);
 		String strComd = scan.nextLine();
 		
@@ -18,23 +24,25 @@ public class AppDriver {
 			{
 				if(Character.toLowerCase(cmds[i].charAt(1))=='t') 
 				{
-					System.out.println(cmds[i].charAt(2));
+					type = cmds[i].charAt(2);
 				}
 				if(Character.toLowerCase(cmds[i].charAt(1))=='s')
 				{
-					System.out.println(cmds[i].charAt(2));
+					algo = cmds[i].charAt(2);
 				}
 				if(Character.toLowerCase(cmds[i].charAt(1))=='f')
 				{
-					String file = cmds[i].toString().replace("\"", "").substring(2);
-					System.out.println(file);
+					path = cmds[i].toString().replace("\"", "").substring(2);
 				}
-				//System.out.println(cmds[i].toString());
 			}
+		}else 
+		{
+			System.out.println("Please enter the Search Command or Type ? for help");
 		}
 		
 		scan.close();
-
+		
+		PolygonSorter.SortPolygon(PolygonSorter.Loadpolygonarray(path), algo, type);
 	}
 
 }
