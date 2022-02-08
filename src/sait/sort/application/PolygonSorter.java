@@ -36,7 +36,7 @@ public class PolygonSorter
 			case "b":
 			break;
 			case "s":
-				Allsorts.selectionSort(array, 0, comp);
+				Allsorts.selectionSort(array, comp);
 			break;
 			case "i":
 			break;
