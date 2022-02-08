@@ -14,48 +14,54 @@ class MergeSorter {
 
 	  private static <T> void mergeSort(T[] a, int l, int r, Comparator<? super T> comp) {
 		  int mid = (l + r) / 2;
-		  
-		  if (r-l<=1)
-	      return;
+	     //return if array is empty
+		  if (r-l<=1){
+	      return}
 	        
-	    // Sort the first and the second half
+	    // Sort the first and the second half of the array
+		  else{
 	    mergeSort(a, l, mid, comp);
 	    mergeSort(a, mid + 1, r, comp);
 	    merge(a, l, mid, r, comp);
+		  }
 	  }
 
 	  private static <T> void merge(T[] a, int l, int mid, int r, Comparator<? super T> comp) {
 	    int i = r - l + 1;
-	    Object[] values = new Object[i];
+	    Object[] temp = new Object[i];
 
 	    int left = l;
 
 	    int midValue = mid + 1;
 
 	    int index = 0;
-
+		// merge left side into right side of the array  
 	    while (left <= mid && midValue <= r) {
 	      if (comp.compare(a[left], a[midValue]) < 0) {
-	        values[index] = a[left];
+	        temp[index] = a[left];
 	        left++;
-	      } else {
+	      } 
+		// merge right side into left side of the array
+		else {
 	        values[index] = a[midValue];
 	        midValue++;
 	      }
 	      index++;
 	    }
 
-	    while (left <= mid) {
-	      values[index] = a[left];
+	      //merge all values from left side to temp
+	      while (left <= mid) {
+	      temp[index] = a[left];
 	      left++;
 	      index++;
 	    }
+	   // merge all values from right side to temp
 	    while (midValue <= r) {
 	      values[index] = a[midValue];
 	      midValue++;
 	      index++;
 	    }
-
+		  // merge temp into array a
 	    for (index = 0; index < i; index++)
 	      a[l + index] = (T) values[index];
 	  }
