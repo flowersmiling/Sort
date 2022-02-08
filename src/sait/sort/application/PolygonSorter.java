@@ -41,6 +41,7 @@ public class PolygonSorter
 			case "i":
 			break;
 			case "m":
+				Allsorts.mergeSort(array, comp);
 			break;
 			case "q":
 			break;
