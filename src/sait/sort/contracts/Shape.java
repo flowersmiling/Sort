@@ -4,24 +4,24 @@ import java.lang.Comparable;
 
 public abstract class Shape implements Comparable<Shape>
 {
-	private float height;
+	private double height;
 	
 	public abstract double baseArea();
 	
 	public abstract double volume();
 
-	public Shape(float height) 
+	public Shape(double height) 
 	{
 		super();
 		this.height = height;
 	}
 
-	public float getHeight() 
+	public double getHeight() 
 	{
 		return height;
 	}
 
-	public void setHeight(float height) 
+	public void setHeight(double height) 
 	{
 		this.height = height;
 	}

@@ -19,6 +19,7 @@ public class PolygonSorter
 		Scanner input = null;
 		File newFile = new File(path);
 		Shape[] polyArray = null;
+		int size = 0;
 		String className = "";
 		double height = 0;
 		double rs = 0;
@@ -34,7 +35,6 @@ public class PolygonSorter
 		}
 		
 		while( input.hasNext() ) {
-			int size = 0;
 			className = input.next();
 			height = input.nextDouble();
 			rs = input.nextDouble();
@@ -47,8 +47,8 @@ public class PolygonSorter
 			@SuppressWarnings("unchecked")
 			Constructor ct = ref.getConstructor(paramTypes);
 			Object args[] = new Object[1];
-			args[0] = height;
-			args[1] = rs;
+			args[0] = new Double( height );
+			args[1] = new Double( rs );
 			
 			polyArray[size] = (Shape) ct.newInstance(args);
 			size++;
@@ -80,10 +80,14 @@ public class PolygonSorter
 			break;
 			case 's':
 				Allsorts.selectionSort(array, comp);
+				// -ta -ss -f"res\polyfor1".txt
+				System.out.println(array.length);
+				System.out.println("Spend time:");
 			break;
 			case 'i':
 			break;
 			case 'm':
+				//Allsorts.mergeSort(array, comp);
 			break;
 			case 'q':
 			break;

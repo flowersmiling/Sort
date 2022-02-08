@@ -2,18 +2,18 @@ package sait.sort.contracts;
 
 public abstract class Prism extends Shape
 {
-	private float side;
+	private double side;
 
-	public Prism(float height, float side) {
+	public Prism(double height, double side) {
 		super(height);
 		this.side = side;
 	}
 
-	public float getSide() {
+	public double getSide() {
 		return side;
 	}
 
-	public void setSide(float side) {
+	public void setSide(double side) {
 		this.side = side;
 	}
 	

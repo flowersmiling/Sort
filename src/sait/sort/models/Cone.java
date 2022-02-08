@@ -5,9 +5,8 @@ import sait.sort.contracts.Shape;
 public class Cone extends Shape
 {
 	private double radiu;
-	final float PI = 3.14f;
 	
-	public Cone(float height, double radiu) 
+	public Cone(double height, double radiu) 
 	{
 		super(height);
 		this.radiu = radiu;
@@ -26,7 +25,7 @@ public class Cone extends Shape
 	@Override
 	public double baseArea() 
 	{
-		return PI*this.radiu*this.radiu;
+		return Math.PI*this.radiu*this.radiu;
 	}
 
 	@Override

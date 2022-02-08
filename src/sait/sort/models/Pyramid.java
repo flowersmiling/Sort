@@ -6,7 +6,7 @@ public class Pyramid extends Shape
 {
 	private double edge_length;
 	
-	public Pyramid(float height, double edge_length) 
+	public Pyramid(double height, double edge_length) 
 	{
 		super(height);
 		this.edge_length = edge_length;
