@@ -7,12 +7,12 @@ import java.util.Comparator;
 
 class MergeSorter {
 
-	  public static <T> void sort(Comparable<T>[] a, Comparator<? super T> comp) {
+	  public static <T> void sort(T[] a, Comparator<? super T> comp) {
 	    mergeSort(a, 0, a.length - 1, comp);
 	  }
 
 
-	  private static <T> void mergeSort(Comparable<T>[] a, int l, int r, Comparator<? super T> comp) {
+	  private static <T> void mergeSort(T[] a, int l, int r, Comparator<? super T> comp) {
 		  int mid = (l + r) / 2;
 	     //return if array is empty
 		  if (r-l<=1){
@@ -28,7 +28,7 @@ class MergeSorter {
 		  }
 	  }
 
-	  private static <T> void merge(Comparable<T>[] a, int l, int mid, int r, Comparator<? super T> comp) {
+	  private static <T> void merge(T[] a, int l, int mid, int r, Comparator<? super T> comp) {
 	    int i = r - l + 1;
 	    Object[] temp = new Object[i];
 
@@ -57,7 +57,6 @@ class MergeSorter {
 	      left++;
 	      index++;
 	    }
-		  
 	   // merge all values from right side to temp
 	    while (midValue <= r) {
 	      temp[index] = a[midValue];
@@ -69,6 +68,5 @@ class MergeSorter {
 	      a[l + index] = (T) temp[index];
 	  }
 	}
-
 
 
