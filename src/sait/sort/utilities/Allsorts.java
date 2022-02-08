@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class Allsorts 
 {
-	public static <T extends Comparable<? super T>> void selectionSort(T[] a, int n, Comparator<? super T> comp)
+	public static <T> void selectionSort(Comparable<T>[] a, int n, Comparator<? super T> comp)
 	{
 		for (int index = 0; index < n-1; index++)
 		{
@@ -14,13 +14,14 @@ public class Allsorts
 		}
 	}
 	
-	private static <T extends Comparable<? super T>> int getIndexOfSmallest(T[] a, int first, int last, Comparator<? super T> comp)
+	@SuppressWarnings("unchecked")
+	private static <T> int getIndexOfSmallest(Comparable<T>[] a, int first, int last, Comparator<? super T> comp)
 	{
-		T min = a[first];
+		Comparable<T> min = a[first];
 		int indexOfMin = first;
 		for (int index = first + 1; index <= last; index++)
 		{
-			if (comp.compare(a[index], min) < 0)
+			if (comp.compare((T)a[index], (T)min) < 0)
 			{
 				min = a[index];
 				indexOfMin = index;
