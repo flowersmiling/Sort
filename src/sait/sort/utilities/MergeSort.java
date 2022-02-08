@@ -16,7 +16,9 @@ class MergeSorter {
 		  int mid = (l + r) / 2;
 	     //return if array is empty
 		  if (r-l<=1){
-	      return}
+			  
+	      return;
+	      }
 	        
 	    // Sort the first and the second half of the array
 		  else{
@@ -57,14 +59,15 @@ class MergeSorter {
 	    }
 	   // merge all values from right side to temp
 	    while (midValue <= r) {
-	      values[index] = a[midValue];
+	      temp[index] = a[midValue];
 	      midValue++;
 	      index++;
 	    }
 		  // merge temp into array a
 	    for (index = 0; index < i; index++)
-	      a[l + index] = (T) values[index];
+	      a[l + index] = (T) temp[index];
 	  }
 	}
+
 
 
