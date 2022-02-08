@@ -10,16 +10,41 @@ public class TriangleP extends Prism
 		super(height, side);
 	}
 
+/**
+	 * @return the side
+	 */
+	public float getSide() {
+		return side;
+	}
+
+	/**
+	 * @param side the side to set
+	 */
+	public void setSide(float side) {
+		this.side = side;
+	}
+
+	/**
+	 * @return the height
+	 */
+	public float getHeight() {
+		return height;
+	}
+
+	/**
+	 * @param height the height to set
+	 */
+	public void setHeight(float height) {
+		this.height = height;
+	}
+
 	@Override
 	public double baseArea() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (Math.sqrt(3)/4)*(this.side*this.side);
 	}
 
 	@Override
 	public double volume() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.baseArea()*this.height;
 	}
-	
 }
