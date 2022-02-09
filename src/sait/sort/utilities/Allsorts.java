@@ -6,9 +6,9 @@ public class Allsorts
 {
 	/** 
 	* Selection Sort Algorithm 
-	* @param <T>
-	* @param a
-	* @param comp
+	* @param <T> - placeholder of Type
+	* @param a - Array to be sorted
+	* @param comp - Comparator
 	*/
 	
 	@SuppressWarnings("unchecked")
@@ -35,9 +35,9 @@ public class Allsorts
 	
 	/** 
 	* Bubble Sort Algorithm 
-	* @param <T>
-	* @param a
-	* @param comp
+	* @param <T> - placeholder of Type
+	* @param a - Array to be sorted
+	* @param comp - Comparator
 	*/
 	
 	@SuppressWarnings("unchecked")
@@ -57,9 +57,9 @@ public class Allsorts
 	
 	/** 
 	* Insertion Sort Algorithm 
-	* @param <T>
-	* @param arr
-	* @param comp
+	* @param <T> - placeholder of Type
+	* @param arr - Array to be Sorted
+	* @param comp - Comparator
 	*/
 	
 	@SuppressWarnings("unchecked")
@@ -83,7 +83,7 @@ public class Allsorts
 	
 	/** 
 	* Quick Sort Algorithm 
-	* @param <T>
+	* @param <T> - placeholder of Type
 	* @param arr - Array to be sorted
 	* @param low - Starting index
 	* @param high - Ending index
@@ -110,12 +110,12 @@ public class Allsorts
    	*array, and places all smaller (smaller than pivot)
    	*to left of pivot and all greater elements to right
    	*of pivot 
-	* @param <T>
+	* @param <T> - placeholder of Type
 	* @param arr - Array to be sorted
 	* @param low - Starting index
 	* @param high - Ending index
 	* @param comp - Comparator
-	* @return
+	* @return - index
 	*/
 	
 	@SuppressWarnings("unchecked")
@@ -150,7 +150,7 @@ public class Allsorts
 	
 	/** 
 	* A utility function to swap two elements 
-	 * @param <T>
+	 * @param <T> - placeholder of Type
 	* @param arr - Array to be swapped
 	* @param i - first position
 	* @param j - second position
@@ -165,11 +165,11 @@ public class Allsorts
 	
 	/** 
 	* Decide what type is compared:Comparble or Comparator
-	* @param <T>
-	* @param a
-	* @param b
-	* @param comp
-	* @return int
+	* @param <T> - placeholder of Type
+	* @param a - object a
+	* @param b - object b
+	* @param comp - Comparator
+	* @return int - -1,0,1
 	*/
 	
 	@SuppressWarnings("unchecked")
@@ -184,68 +184,93 @@ public class Allsorts
 		}
 	}
 	
-	 public static <T> void sort(T[] a, Comparator<? super T> comp) 
-	 {
-		 //mergeSort(a, 0, a.length - 1, comp);
-	 }
-	 
-	 private <T> void mergeSort(T[] a, int l, int r, Comparator<? super T> comp) 
-	 {
-		  int mid = (l + r) / 2;
-	     //return if array is empty
-		  if (r-l<=1){
-			  
-	      return;
-	      }
-	        
-	    // Sort the first and the second half of the array
-		  else{
-	    mergeSort(a, l, mid, comp);
-	    mergeSort(a, mid + 1, r, comp);
-	    merge(a, l, mid, r, comp);
-		  }
-	  }
-	 
-	 private <T> void merge(T[] a, int l, int mid, int r, Comparator<? super T> comp) 
-	 {
-	    int i = r - l + 1;
-	    Object[] temp = new Object[i];
-
-	    int left = l;
-
-	    int midValue = mid + 1;
-
-	    int index = 0;
-		// merge left side into right side of the array  
-	    while (left <= mid && midValue <= r) {
-	      if (comp.compare(a[left], a[midValue]) < 0) {
-	        temp[index] = a[left];
-	        left++;
-	      } 
-		// merge right side into left side of the array
-		else {
-	        temp[index] = a[midValue];
-	        midValue++;
-	      }
-	      index++;
-	    }
-
-	      //merge all values from left side to temp
-	      while (left <= mid) {
-	      temp[index] = a[left];
-	      left++;
-	      index++;
-	    }
-	   // merge all values from right side to temp
-	    while (midValue <= r) {
-	      temp[index] = a[midValue];
-	      midValue++;
-	      index++;
-	    }
-		  // merge temp into array a
-	    for (index = 0; index < i; index++)
-	      a[l + index] = (T) temp[index];
-	 }
+	/** 
+	* Main function that sorts arr[l..r] using merge() 
+	 * @param <T> - placeholder of Type
+	* @param arr - Array to be sorted
+	* @param l - start index
+	* @param r - end index
+	* @param comp - Comparator
+	*/
+	
+	public static <T> void mergeSort(Comparable<T>[] arr, int l, int r, Comparator<? super T> comp)
+    {
+        if (l < r) {
+            // Find the middle point
+            int m =l+ (r-l)/2;
+  
+            // Sort first and second halves
+            mergeSort(arr, l, m, comp);
+            mergeSort(arr, m + 1, r, comp);
+  
+            // Merge the sorted halves
+            merge(arr, l, m, r, comp);
+        }
+    }
+	
+	/** 
+	* Merges two subarrays of arr[] 
+	 * @param <T> - placeholder of Type
+	* @param arr - Array to be sorted
+	* @param l - First subarray is arr[l..m]
+	* @param m - Second subarray is arr[m+1..r]
+	* @param r - last index
+	* @param comp - Comparator
+	*/
+	
+	@SuppressWarnings("unchecked")
+	static <T> void merge(Comparable<T>[] arr, int l, int m, int r, Comparator<? super T> comp)
+    {
+        // Find sizes of two subarrays to be merged
+        int n1 = m - l + 1;
+        int n2 = r - m;
+  
+        /* Create temp arrays */
+        Object[] L = new Object[n1];
+        Object[] R = new Object[n2];
+  
+        /*Copy data to temp arrays*/
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[l + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[m + 1 + j];
+  
+        /* Merge the temp arrays */
+  
+        // Initial indexes of first and second subarrays
+        int i = 0, j = 0;
+  
+        // Initial index of merged subarray array
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (compare((T)L[i], (T)R[j], comp) > 0) 
+            {
+                arr[k] = (Comparable<T>) L[i];
+                i++;
+            }
+            else {
+                arr[k] = (Comparable<T>) R[j];
+                j++;
+            }
+            k++;
+        }
+  
+        /* Copy remaining elements of L[] if any */
+        while (i < n1) {
+            arr[k] = (Comparable<T>) L[i];
+            i++;
+            k++;
+        }
+  
+        /* Copy remaining elements of R[] if any */
+        while (j < n2) {
+            arr[k] = (Comparable<T>) R[j];
+            j++;
+            k++;
+        }
+    }
+	
+	//The sixth sort selected should include a detailed description of the sort¡¯s algorithm and a complexity analysis.
 }
 	
 

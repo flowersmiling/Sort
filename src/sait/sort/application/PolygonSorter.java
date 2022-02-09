@@ -146,7 +146,29 @@ public class PolygonSorter
 				System.out.println("Spend time:"+totalTime);
 			break;
 			case 'm':
-				//Allsorts.mergeSort(array, comp);
+				startTime = System.currentTimeMillis();
+				Allsorts.mergeSort(array,0,array.length-1,comp);
+				endTime = System.currentTimeMillis();
+				totalTime = endTime - startTime;
+				
+				// -tv -sm -f"res\polyfor1".txt
+				// test print
+				
+				System.out.println(array.length);
+				
+//				System.out.println(((Shape) array[0]).baseArea());
+//				System.out.println(((Shape) array[array.length/2]).baseArea());
+//				System.out.println(((Shape) array[array.length-1]).baseArea());
+				
+//				System.out.println(((Shape) array[0]).getHeight());
+//				System.out.println(((Shape) array[array.length/2]).getHeight());
+//				System.out.println(((Shape) array[array.length-1]).getHeight());
+				
+				System.out.println(((Shape) array[0]).volume());
+				System.out.println(((Shape) array[array.length/2]).volume());
+				System.out.println(((Shape) array[array.length-1]).volume());
+				
+				System.out.println("Spend time:"+totalTime);
 			break;
 			case 'q':
 				startTime = System.currentTimeMillis();
