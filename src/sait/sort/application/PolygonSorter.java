@@ -54,6 +54,9 @@ public class PolygonSorter
 	public static <T> void SortPolygon(Comparable<T>[] array, char compAlgor, char compType) 
 	{
 		Comparator<? super T> comp;
+		long startTime;
+		long endTime;
+		long totalTime;		
 		
 		if(compType == 'v') 
 		{
@@ -71,10 +74,18 @@ public class PolygonSorter
 			case 'b':
 			break;
 			case 's':
+				startTime = System.currentTimeMillis();
 				Allsorts.selectionSort(array, comp);
+				endTime = System.currentTimeMillis();
+				totalTime = endTime - startTime;
+				
 				// -ta -ss -f"res\polyfor1".txt
+				
 				System.out.println(array.length);
-				System.out.println("Spend time:");
+				System.out.println(((Shape) array[0]).baseArea());
+				System.out.println(((Shape) array[array.length/2]).baseArea());
+				System.out.println(((Shape) array[array.length-1]).baseArea());
+				System.out.println("Spend time:"+totalTime);
 			break;
 			case 'i':
 			break;
