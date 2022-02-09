@@ -14,6 +14,21 @@ import sait.sort.utilities.Allsorts;
 
 public class PolygonSorter 
 {
+	/** 
+	* Load the data file into array 
+	* Generates the objects using reflection 
+	* @param path - data file path
+	* @return - Shape object array
+	* @throws ClassNotFoundException
+	* @throws InstantiationException
+	* @throws IllegalAccessException
+	* @throws NoSuchMethodException
+	* @throws SecurityException
+	* @throws IllegalArgumentException
+	* @throws InvocationTargetException
+	* @throws IOException
+	*/
+	
 	public static Shape[] Loadpolygonarray(String path) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, IOException
 	{
 		FileInputStream inputStream = null;
@@ -49,6 +64,14 @@ public class PolygonSorter
         
 		return polyArray;
 	}
+	
+	/** 
+	* Invoke kinds of sort algorithm to sort array 
+	* @param <T> - placeholder of Type
+	* @param array - array to be sorted
+	* @param compAlgor - algorithm to be choose:b is bubble, s is selection, i is insertion, m is merge, q is quick, z is self-choose.
+	* @param compType - type to be compared:v is volume, h is height, a is base area
+	*/
 	
 	@SuppressWarnings("unchecked")
 	public static <T> void SortPolygon(Comparable<T>[] array, char compAlgor, char compType) 
