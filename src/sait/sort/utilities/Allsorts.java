@@ -33,6 +33,13 @@ public class Allsorts
         }
 	}
 	
+	/** 
+	* Bubble Sort Algorithm 
+	* @param <T>
+	* @param a
+	* @param comp
+	*/
+	
 	@SuppressWarnings("unchecked")
 	public static <T> void bubbleSort(Comparable<T>[] a, Comparator<? super T> comp)
     {
@@ -47,6 +54,13 @@ public class Allsorts
                     a[j+1] = temp;
                 }
     }
+	
+	/** 
+	* Insertion Sort Algorithm 
+	* @param <T>
+	* @param arr
+	* @param comp
+	*/
 	
 	@SuppressWarnings("unchecked")
 	public static <T> void insertionSort (Comparable<T>[] arr, Comparator<? super T> comp)
@@ -66,6 +80,88 @@ public class Allsorts
             arr[j + 1] = key;
         }
     }
+	
+	/** 
+	* Quick Sort Algorithm 
+	* @param <T>
+	* @param arr - Array to be sorted
+	* @param low - Starting index
+	* @param high - Ending index
+	*/
+	
+	public static <T> void quickSort(Comparable<T>[] arr, int low, int high, Comparator<? super T> comp)
+	{
+	    if (low < high)
+	    {	         
+	        // pi is partitioning index, arr[p]
+	        // is now at right place
+	        int pi = partition(arr, low, high, comp);
+	 
+	        // Separately sort elements before
+	        // partition and after partition
+	        quickSort(arr, low, pi - 1, comp);
+	        quickSort(arr, pi + 1, high, comp);
+	    }
+	}
+	
+	/** 
+	* This function takes last element as pivot, places
+   	*the pivot element at its correct position in sorted
+   	*array, and places all smaller (smaller than pivot)
+   	*to left of pivot and all greater elements to right
+   	*of pivot 
+	* @param <T>
+	* @param arr - Array to be sorted
+	* @param low - Starting index
+	* @param high - Ending index
+	* @param comp - Comparator
+	* @return
+	*/
+	
+	@SuppressWarnings("unchecked")
+	static <T> int partition(Comparable<T>[] arr, int low, int high, Comparator<? super T> comp)
+	{
+	     
+	    // pivot
+		Comparable<T> pivot = arr[high];
+	     
+	    // Index of smaller element and
+	    // indicates the right position
+	    // of pivot found so far
+	    int i = (low - 1);
+	 
+	    for(int j = low; j <= high - 1; j++)
+	    {
+	         
+	        // If current element is smaller
+	        // than the pivot
+	        if (compare((T)arr[j], (T)pivot, comp) > 0)
+	        {
+	             
+	            // Increment index of
+	            // smaller element
+	            i++;
+	            swap(arr, i, j);
+	        }
+	    }
+	    swap(arr, i + 1, high);
+	    return (i + 1);
+	}
+	
+	/** 
+	* A utility function to swap two elements 
+	 * @param <T>
+	* @param arr - Array to be swapped
+	* @param i - first position
+	* @param j - second position
+	*/
+	
+	static <T> void swap(Comparable<T>[] arr, int i, int j)
+	{
+		Comparable<T> temp = arr[i];
+	    arr[i] = arr[j];
+	    arr[j] = temp;
+	}
 	
 	/** 
 	* Decide what type is compared:Comparble or Comparator
