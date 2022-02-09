@@ -1,12 +1,13 @@
 package sait.sort.application;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
 public class AppDriver {
 
-	public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException 
+	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, IOException 
 	{
 		char type = ' ';
 		char algo = ' ';

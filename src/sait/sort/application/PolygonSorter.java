@@ -1,7 +1,7 @@
 package sait.sort.application;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Comparator;
@@ -14,47 +14,39 @@ import sait.sort.utilities.Allsorts;
 
 public class PolygonSorter 
 {
-	public static Shape[] Loadpolygonarray(String path) throws FileNotFoundException, ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException
+	public static Shape[] Loadpolygonarray(String path) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, IOException
 	{
-		Scanner input = null;
-		File newFile = new File(path);
+		FileInputStream inputStream = null;
+		Scanner sc = null;
 		Shape[] polyArray = null;
-		int size = 0;
-		String className = "";
-		double height = 0;
-		double rs = 0;
 		
-		if (!newFile.exists()) {
-		    System.out.println("Data file does not exists");		      
-		    System.exit(0);
-		}
-		else 
-		{
-			input = new Scanner( newFile );
-			polyArray = new Shape[input.nextInt()];
-		}
+		inputStream = new FileInputStream(path);
 		
-		while( input.hasNext() ) {
-			className = input.next();
-			height = input.nextDouble();
-			rs = input.nextDouble();
-			
-			Class ref = Class.forName(className);
-			Class paramTypes[] = new Class[1];
-			paramTypes[0] = Double.TYPE;
-			paramTypes[1] = Double.TYPE;
-			
-			@SuppressWarnings("unchecked")
-			Constructor ct = ref.getConstructor(paramTypes);
-			Object args[] = new Object[1];
-			args[0] = new Double( height );
-			args[1] = new Double( rs );
-			
-			polyArray[size] = (Shape) ct.newInstance(args);
-			size++;
-		}
+        sc = new Scanner(inputStream, "utf-8");
+        while (sc.hasNextLine()) {
+            String line = sc.nextLine();
+            String[] arr = line.split(" ");
+            polyArray = new Shape[Integer.parseInt(arr[0])];
+            int k = (arr.length-1) / 3;
+            
+            for(int i = 0; i < k; i++) {
+            	String className = arr[(3*i)+1];
+            	double height = Double.parseDouble(arr[(3*i)+2]);
+            	double rs = Double.parseDouble(arr[(3*i)+3]);
+            	
+            	//forName: must use the whole path name of the class
+            	Class ref = Class.forName("sait.sort.models."+className);
+            	
+    			@SuppressWarnings("unchecked")
+    			Constructor ct = ref.getConstructor(Double.TYPE, Double.TYPE);
+    			
+    			polyArray[i] = (Shape) ct.newInstance(height,rs);
+            }
+        }
 		
-		input.close();
+        inputStream.close();
+        sc.close();
+        
 		return polyArray;
 	}
 	

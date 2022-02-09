@@ -2,12 +2,12 @@ package sait.sort.models;
 
 import sait.sort.contracts.Prism;
 
-public class TrianglarPrism extends Prism
+public class TriangularPrism extends Prism
 {
 	private double side;
 	private double height;
 
-	public TrianglarPrism(double height, double side) 
+	public TriangularPrism(double height, double side) 
 	{
 		super(height, side);
 	}
