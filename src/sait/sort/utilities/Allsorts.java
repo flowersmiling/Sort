@@ -4,6 +4,13 @@ import java.util.Comparator;
 
 public class Allsorts 
 {
+	/** 
+	* Selection Sort Algorithm 
+	* @param <T>
+	* @param a
+	* @param comp
+	*/
+	
 	@SuppressWarnings("unchecked")
 	public static <T> void selectionSort(Comparable<T>[] a, Comparator<? super T> comp) 
 	{
@@ -15,7 +22,7 @@ public class Allsorts
             // Find the minimum element in unsorted array
             int min_idx = i;
             for (int j = i+1; j < n; j++)
-                if ( comp.compare((T)a[j], (T)a[min_idx]) > 0 ) //descending order
+                if ( compare((T)a[j], (T)a[min_idx], comp) > 0 ) //descending order
                     min_idx = j;
   
             // Swap the found minimum element with the first
@@ -24,6 +31,27 @@ public class Allsorts
             a[min_idx] = a[i];
             a[i] = temp;
         }
+	}
+	
+	/** 
+	* Decide what type is compared:Comparble or Comparator
+	* @param <T>
+	* @param a
+	* @param b
+	* @param comp
+	* @return int
+	*/
+	
+	@SuppressWarnings("unchecked")
+	private static <T> int compare(T a, T b, Comparator<? super T> comp) 
+	{
+		if( comp != null )  //Comparator interface
+		{
+			return comp.compare((T)a, (T)b);
+		}else	//Comparable interface
+		{
+			return ((Comparable<T>)a).compareTo(b);
+		}
 	}
 	
 	 public static <T> void sort(T[] a, Comparator<? super T> comp) 
