@@ -33,6 +33,40 @@ public class Allsorts
         }
 	}
 	
+	@SuppressWarnings("unchecked")
+	public static <T> void bubbleSort(Comparable<T>[] a, Comparator<? super T> comp)
+    {
+        int n = a.length;
+        for (int i = 0; i < n-1; i++)
+            for (int j = 0; j < n-i-1; j++)
+                if (compare((T)a[j], (T)a[j+1], comp) < 0)
+                {
+                    // swap a[j+1] and a[j]
+                	Comparable<T> temp = a[j];
+                    a[j] = a[j+1];
+                    a[j+1] = temp;
+                }
+    }
+	
+	@SuppressWarnings("unchecked")
+	public static <T> void insertionSort (Comparable<T>[] arr, Comparator<? super T> comp)
+    {
+        int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            Comparable<T> key = arr[i];
+            int j = i - 1;
+ 
+            /* Move elements of arr[0..i-1], that are
+               greater than key, to one position ahead
+               of their current position */
+            while (j >= 0 && compare((T)arr[j], (T)key, comp) < 0) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
+        }
+    }
+	
 	/** 
 	* Decide what type is compared:Comparble or Comparator
 	* @param <T>
