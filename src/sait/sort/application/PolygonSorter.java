@@ -29,6 +29,7 @@ public class PolygonSorter
 	* @throws IOException
 	*/
 	
+	@SuppressWarnings("rawtypes")
 	public static Shape[] Loadpolygonarray(String path) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, IOException
 	{
 		FileInputStream inputStream = null;
@@ -99,128 +100,95 @@ public class PolygonSorter
 				Allsorts.bubbleSort(array, comp);
 				endTime = System.currentTimeMillis();
 				totalTime = endTime - startTime;
-				
-				// -th -sb -f"res\polyfor1".txt
-				// test print
-				
-				System.out.println(array.length);
-				
-//				System.out.println(((Shape) array[0]).baseArea());
-//				System.out.println(((Shape) array[array.length/2]).baseArea());
-//				System.out.println(((Shape) array[array.length-1]).baseArea());
-				
-				System.out.println(((Shape) array[0]).getHeight());
-				System.out.println(((Shape) array[array.length/2]).getHeight());
-				System.out.println(((Shape) array[array.length-1]).getHeight());
-				
-//				System.out.println(((Shape) array[0]).volume());
-//				System.out.println(((Shape) array[array.length/2]).volume());
-//				System.out.println(((Shape) array[array.length-1]).volume());
-				
-				System.out.println("Spend time:"+totalTime);
+				System.out.println("Spend time(Millisecond): "+totalTime);
+				showResult(array, compType);
+								
+				// -ts -sb -f"res\polyfor1".txt
 			break;
 			case 's':
 				startTime = System.currentTimeMillis();
 				Allsorts.selectionSort(array, comp);
 				endTime = System.currentTimeMillis();
 				totalTime = endTime - startTime;
+				System.out.println("Spend time(Millisecond): "+totalTime);
+				showResult(array, compType);
 				
 				// -ta -ss -f"res\polyfor1".txt
-				// test print
-				
-				System.out.println(array.length);
-				
-				System.out.println(((Shape) array[0]).baseArea());
-				System.out.println(((Shape) array[array.length/2]).baseArea());
-				System.out.println(((Shape) array[array.length-1]).baseArea());
-				
-//				System.out.println(((Shape) array[0]).getHeight());
-//				System.out.println(((Shape) array[array.length/2]).getHeight());
-//				System.out.println(((Shape) array[array.length-1]).getHeight());
-				
-//				System.out.println(((Shape) array[0]).volume());
-//				System.out.println(((Shape) array[array.length/2]).volume());
-//				System.out.println(((Shape) array[array.length-1]).volume());
-				
-				System.out.println("Spend time:"+totalTime);
 			break;
 			case 'i':
 				startTime = System.currentTimeMillis();
 				Allsorts.insertionSort(array, comp);
 				endTime = System.currentTimeMillis();
 				totalTime = endTime - startTime;
+				System.out.println("Spend time(Millisecond): "+totalTime);
+				showResult(array, compType);
 				
 				// -th -si -f"res\polyfor1".txt
-				// test print
-				
-				System.out.println(array.length);
-				
-//				System.out.println(((Shape) array[0]).baseArea());
-//				System.out.println(((Shape) array[array.length/2]).baseArea());
-//				System.out.println(((Shape) array[array.length-1]).baseArea());
-				
-				System.out.println(((Shape) array[0]).getHeight());
-				System.out.println(((Shape) array[array.length/2]).getHeight());
-				System.out.println(((Shape) array[array.length-1]).getHeight());
-				
-//				System.out.println(((Shape) array[0]).volume());
-//				System.out.println(((Shape) array[array.length/2]).volume());
-//				System.out.println(((Shape) array[array.length-1]).volume());
-				System.out.println("Spend time:"+totalTime);
 			break;
 			case 'm':
 				startTime = System.currentTimeMillis();
 				Allsorts.mergeSort(array,0,array.length-1,comp);
 				endTime = System.currentTimeMillis();
 				totalTime = endTime - startTime;
+				System.out.println("Spend time(Millisecond): "+totalTime);
+				showResult(array, compType);
 				
 				// -tv -sm -f"res\polyfor1".txt
-				// test print
-				
-				System.out.println(array.length);
-				
-//				System.out.println(((Shape) array[0]).baseArea());
-//				System.out.println(((Shape) array[array.length/2]).baseArea());
-//				System.out.println(((Shape) array[array.length-1]).baseArea());
-				
-//				System.out.println(((Shape) array[0]).getHeight());
-//				System.out.println(((Shape) array[array.length/2]).getHeight());
-//				System.out.println(((Shape) array[array.length-1]).getHeight());
-				
-				System.out.println(((Shape) array[0]).volume());
-				System.out.println(((Shape) array[array.length/2]).volume());
-				System.out.println(((Shape) array[array.length-1]).volume());
-				
-				System.out.println("Spend time:"+totalTime);
 			break;
 			case 'q':
 				startTime = System.currentTimeMillis();
 				Allsorts.quickSort(array, 0, array.length-1, comp);
 				endTime = System.currentTimeMillis();
 				totalTime = endTime - startTime;
+				System.out.println("Spend time(Millisecond): "+totalTime);
+				showResult(array, compType);
 				
 				// -tv -sq -f"res\polyfor1".txt
-				// test print
-				
-				System.out.println(array.length);
-				
-//				System.out.println(((Shape) array[0]).baseArea());
-//				System.out.println(((Shape) array[array.length/2]).baseArea());
-//				System.out.println(((Shape) array[array.length-1]).baseArea());
-				
-//				System.out.println(((Shape) array[0]).getHeight());
-//				System.out.println(((Shape) array[array.length/2]).getHeight());
-//				System.out.println(((Shape) array[array.length-1]).getHeight());
-				
-				System.out.println(((Shape) array[0]).volume());
-				System.out.println(((Shape) array[array.length/2]).volume());
-				System.out.println(((Shape) array[array.length-1]).volume());
-				
-				System.out.println("Spend time:"+totalTime);
 			break;
 			case 'z':
+				startTime = System.currentTimeMillis();
+				Allsorts.shellSort(array, comp);
+				endTime = System.currentTimeMillis();
+				totalTime = endTime - startTime;
+				System.out.println("Spend time(Millisecond): "+totalTime);
+				showResult(array, compType);
+
+				// -tv -sz -f"res\polyfor1".txt
 			break;
 		}
 		
+	}
+	
+	/** 
+	* TODO 
+	* @param <T>- placeholder of Type
+	* @param array - array been sorted
+	* @param compType - Comparator
+	*/
+	
+	private static <T> void showResult(Comparable<T>[] array, char compType) 
+	{
+		if(compType == 'v') {
+			System.out.println("first stored value: "+((Shape) array[0]).volume());
+			System.out.println("last stored value: "+((Shape) array[array.length-1]).volume());
+			System.out.println("every thousandth value: ");
+			for(int i=999;i<array.length;i+=1000) {
+				System.out.println(((Shape) array[i]).volume());
+			}
+		}else if(compType == 'a') {
+			System.out.println("first stored value: "+((Shape) array[0]).baseArea());
+			System.out.println("last stored value: "+((Shape) array[array.length-1]).baseArea());
+			System.out.println("every thousandth value: ");
+			for(int i=999;i<array.length;i+=1000) {
+				System.out.println(((Shape) array[i]).baseArea());
+			}
+		}else {
+			System.out.println("first stored value: "+((Shape) array[0]).getHeight());
+			System.out.println("last stored value: "+((Shape) array[array.length-1]).getHeight());
+			System.out.println("every thousandth value: ");
+			for(int i=999;i<array.length;i+=1000) {
+				System.out.println(((Shape) array[i]).getHeight());
+			}
+		}
 	}
 }

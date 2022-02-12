@@ -270,7 +270,44 @@ public class Allsorts
         }
     }
 	
-	//The sixth sort selected should include a detailed description of the sort¡¯s algorithm and a complexity analysis.
+	/** 
+	* TODO 
+	* @param <T> - placeholder of Type
+	* @param a - Array to be sorted
+	* @param comp - Comparator
+	*/
+	
+	@SuppressWarnings("unchecked")
+	public static <T> void shellSort(Comparable<T>[] a, Comparator<? super T> comp)
+	{
+		int n = a.length;
+	
+		// Start with a big gap, then reduce the gap
+		for (int gap = n/2; gap > 0; gap /=2)
+		{
+			// Do a gapped insertion sort for this gap size.
+			// The first gap elements a[0..gap-1] are already
+			// in gapped order keep adding one more element
+			// until the entire array is gap sorted
+			for (int i = gap; i < n; i++)
+			{
+				// add a[i] to the elements that have been gap
+				// sorted save a[i] in temp and make a hole at
+				// position i
+				Comparable<T> temp = a[i];
+			
+				// shift earlier gap-sorted elements up until
+				// the correct location for a[i] is found
+				int j;
+				for (j = i; j >= gap && compare((T)a[j - gap], (T)temp, comp) < 0; j -= gap)
+					a[j] = a[j - gap];
+				
+					// put temp (the original a[i]) in its correct
+					// location
+					a[j] = temp;
+			}
+		}
+	}
 }
 	
 
