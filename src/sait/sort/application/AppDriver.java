@@ -4,8 +4,24 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
+/**
+ * Entry into the program.
+ */
 public class AppDriver {
 
+	/** 
+	* TODO 
+	* @param args - main method args
+	* @throws ClassNotFoundException - an application tries to load in a class through itsstring name using
+	* @throws InstantiationException - an application tries to create an instance of a classusing the newInstance 
+	* @throws IllegalAccessException - an application triesto reflectively create an instance 
+	* @throws NoSuchMethodException - a particular method cannot be found
+	* @throws SecurityException - to indicate a security violation
+	* @throws IllegalArgumentException - a method has been passed an illegal orinappropriate argument.
+	* @throws InvocationTargetException - wrapsan exception thrown by an invoked method or constructor. 
+	* @throws IOException - produced by failed orinterrupted I/O operations
+	*/
+	
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, IOException 
 	{
 		char type = ' ';

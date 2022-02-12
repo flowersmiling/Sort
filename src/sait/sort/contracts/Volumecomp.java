@@ -2,6 +2,9 @@ package sait.sort.contracts;
 
 import java.util.Comparator;
 
+/**
+ * comparator for volume
+ */
 public class Volumecomp implements Comparator<Shape>
 {
 

@@ -12,6 +12,10 @@ import sait.sort.contracts.Shape;
 import sait.sort.contracts.Volumecomp;
 import sait.sort.utilities.Allsorts;
 
+/**
+ * read data file and create the shape object;Load the shape into array;invoke sort algorithm to sort the shape array
+ * according the proper comparator
+ */
 public class PolygonSorter 
 {
 	/** 
@@ -19,14 +23,14 @@ public class PolygonSorter
 	* Generates the objects using reflection 
 	* @param path - data file path
 	* @return - Shape object array
-	* @throws ClassNotFoundException
-	* @throws InstantiationException
-	* @throws IllegalAccessException
-	* @throws NoSuchMethodException
-	* @throws SecurityException
-	* @throws IllegalArgumentException
-	* @throws InvocationTargetException
-	* @throws IOException
+	* @throws ClassNotFoundException - an application tries to load in a class through itsstring name using
+	* @throws InstantiationException - an application tries to create an instance of a classusing the newInstance 
+	* @throws IllegalAccessException - an application triesto reflectively create an instance 
+	* @throws NoSuchMethodException - a particular method cannot be found
+	* @throws SecurityException - to indicate a security violation
+	* @throws IllegalArgumentException - a method has been passed an illegal orinappropriate argument.
+	* @throws InvocationTargetException - wrapsan exception thrown by an invoked method or constructor. 
+	* @throws IOException - produced by failed orinterrupted I/O operations
 	*/
 	
 	@SuppressWarnings("rawtypes")

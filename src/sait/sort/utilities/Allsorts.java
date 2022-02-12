@@ -2,6 +2,9 @@ package sait.sort.utilities;
 
 import java.util.Comparator;
 
+/**
+ * Sort Algorithm
+ */
 public class Allsorts 
 {
 	/** 
@@ -87,6 +90,7 @@ public class Allsorts
 	* @param arr - Array to be sorted
 	* @param low - Starting index
 	* @param high - Ending index
+	* @param comp - Comparator
 	*/
 	
 	public static <T> void quickSort(Comparable<T>[] arr, int low, int high, Comparator<? super T> comp)

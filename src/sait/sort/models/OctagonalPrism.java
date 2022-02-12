@@ -2,8 +2,16 @@ package sait.sort.models;
 
 import sait.sort.contracts.Prism;
 
+/**
+ * OctagonalPrism object class
+ */
 public class OctagonalPrism extends Prism
 {
+	/**
+	 * constructor of OctagonalPrism
+	 * @param height - height of OctagonalPrism
+	 * @param side - edge length of OctagonalPrism
+	 */
 	public OctagonalPrism(double height, double side) 
 	{
 		super(height, side);

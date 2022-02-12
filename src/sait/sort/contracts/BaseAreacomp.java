@@ -2,6 +2,9 @@ package sait.sort.contracts;
 
 import java.util.Comparator;
 
+/**
+ * Base Area Comparator
+ */
 public class BaseAreacomp implements Comparator<Shape> 
 {
 

@@ -2,9 +2,17 @@ package sait.sort.models;
 
 import sait.sort.contracts.Prism;
 
+/**
+ * SquarePrism object class
+ */
 public class SquarePrism extends Prism 
 {
 
+	/**
+	 * constructor of SquarePrism
+	 * @param height - height of SquarePrism
+	 * @param side - side of SquarePrism
+	 */
 	public SquarePrism(double height, double side) 
 	{
 		super(height, side);

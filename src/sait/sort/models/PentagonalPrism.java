@@ -2,8 +2,16 @@ package sait.sort.models;
 
 import sait.sort.contracts.Prism;
 
+/**
+ * PentagonalPrism object class
+ */
 public class PentagonalPrism extends Prism
 {
+	/**
+	 * constructor of PentagonalPrism
+	 * @param height - height of PentagonalPrism
+	 * @param side - side of PentagonalPrism
+	 */
 	public PentagonalPrism(double height, double side) 
 	{
 		super(height, side);
