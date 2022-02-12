@@ -63,7 +63,11 @@ public class AppDriver {
 					}
 				}
 				
+				System.out.println("Load data file......");
+				
 				PolygonSorter.SortPolygon(PolygonSorter.Loadpolygonarray(path), algo, type);
+				
+				System.out.println("Sort completed!");
 				
 				incmd.close();
 				isContinue = false;
