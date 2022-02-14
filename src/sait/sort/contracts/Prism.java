@@ -5,6 +5,10 @@ package sait.sort.contracts;
  */
 public abstract class Prism extends Shape
 {
+	//A subclass that inherits from an abstract class must be abstract 
+	//if it does not override all the abstract methods of the parent class.
+	//Abstraction-oriented programming.
+	
 	/**
 	 *Prism edge length 
 	 */
